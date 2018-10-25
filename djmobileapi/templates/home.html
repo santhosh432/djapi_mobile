@@ -3,23 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 <body>
+
+<div class="container">
+
 
 <h2>Hello ....</h2>
 <form action="{% url 'homepage' %}" method="get">
     <input type="text" name="mob">
     <input type="submit" value="ok" name="submit">
 </form>
-{{ city }}
-
-<ul>
-
-        {{ user.CustomerName }} 	{{ user.CustomerEmail }} 	{{ user.Channel }} 	{{ user.CreatedDate }} 	{{ user.IntentDescription }} 	{{ user.Status }} 	{{ user.StatusDescription }} 	{{ user.Action }} 	{{ user.IntentInputs }}
 
 
     <hr>
-</ul>
 
+
+    <table class="table table-responsive" border="2px solid black" style="padding:5px;">
+        {% for user in op %}
+
+        <tr>
+            <td>{{ user.CustomerName }}</td>
+            <td>{{ user.CustomerEmail }}</td>
+            <td>{{ user.Channel }}</td>
+            <td>{{ user.CreatedDate }}</td>
+            <td>{{ user.IntentDescription }}</td>
+            <td>{{ user.Status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+
+</ul>
+</div>
 </body>
 </html>

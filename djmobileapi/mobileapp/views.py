@@ -60,10 +60,20 @@ def homepage(request):
             "CustomerName": "MailbotAdmin", "UpdatedDate": "2018-10-23 10:50", "Action": "try again",
             "Intent": "Retroclaim",
             "Prompted": "false"
+        },
+        {
+            "CustomerPhoneNumber": "81293427", "Channel": "Mail7", "CreatedDate": "2018-10-23 10:50",
+            "Status": "Pending", "CustomerEmail": "IBSDepTest E<ibsdeptest@gmail.com>",
+            "IntentDescription": "Retroclaim Missed Points Request", "StatusDescription": "description",
+            "IntentInputs": [{"Source": "HND", "Destination": "SYD", "Date": "05-Apr-2019"}],
+            "CustomerName": "MailbotAdmin", "UpdatedDate": "2018-10-23 10:50", "Action": "try again",
+            "Intent": "Retroclaim",
+            "Prompted": "false"
         }
     ]}
     args = {}
     ctx = {}
+    li  = []
     if 'submit' in request.GET:
         args['contents'] = response
         mob = request.GET.get('mob')
@@ -71,7 +81,9 @@ def homepage(request):
         for k, l in list(args['contents'].items()):
             for s in l:
                 if (s['CustomerPhoneNumber'] == mob):
-                    ctx = {'user': s}
+                    # ctx = {'user': s}
+                    # print(s)
+                    li.append(s)
                     # print(ctx)
-
+        ctx = {'op':li}
     return render(request, 'home.html', ctx)
