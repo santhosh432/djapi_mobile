@@ -7,21 +7,18 @@
 <body>
 
 <h2>Hello ....</h2>
-<form action="{% url 'homepage' %}" method="POST">
- {% csrf_token %}
-
+<form action="{% url 'homepage' %}" method="get">
     <input type="text" name="mob">
-    <input type="submit" value="ok">
+    <input type="submit" value="ok" name="submit">
 </form>
 {{ city }}
 
 <ul>
 
-{% for k in cites %}
-    <li> {{ k.Name }}</li>
+        {{ user.CustomerName }} 	{{ user.CustomerEmail }} 	{{ user.Channel }} 	{{ user.CreatedDate }} 	{{ user.IntentDescription }} 	{{ user.Status }} 	{{ user.StatusDescription }} 	{{ user.Action }} 	{{ user.IntentInputs }}
 
-{% endfor %}
 
+    <hr>
 </ul>
 
 </body>
